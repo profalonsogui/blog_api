@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — painel de posts</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header class="topo">
+      <div class="topo__conteudo">
+        <h1 class="topo__titulo">Blog</h1>
+        <p class="topo__resumo" id="resumo">Carregando posts…</p>
+      </div>
+    </header>
+
+    <main class="pagina">
+      <!-- Lista de posts -->
+      <section class="lista" aria-labelledby="lista-titulo">
+        <div class="lista__barra">
+          <h2 class="secao__titulo" id="lista-titulo">Posts</h2>
+
+          <div class="filtros" role="group" aria-label="Filtrar posts">
+            <button class="filtro filtro--ativo" data-status="">Todos</button>
+            <button class="filtro" data-status="published">Publicados</button>
+            <button class="filtro" data-status="draft">Rascunhos</button>
+          </div>
+
+          <label class="busca">
+            <span class="sr-only">Buscar por título ou conteúdo</span>
+            <input type="search" id="busca" placeholder="Buscar no blog" autocomplete="off" />
+          </label>
+        </div>
+
+        <ul class="posts" id="posts"></ul>
+
+        <p class="vazio" id="vazio" hidden>
+          Nenhum post por aqui. Escreva o primeiro no formulário ao lado.
+        </p>
+      </section>
+
+      <!-- Editor -->
+      <aside class="editor" id="editor">
+        <h2 class="secao__titulo" id="editor-titulo">Novo post</h2>
+
+        <p class="aviso" id="aviso" hidden></p>
+
+        <div class="campo">
+          <label for="title">Título</label>
+          <input type="text" id="title" maxlength="160" placeholder="Ex.: Meu primeiro post" />
+        </div>
+
+        <div class="campo">
+          <label for="author">Autor</label>
+          <input type="text" id="author" maxlength="80" placeholder="Seu nome" />
+        </div>
+
+        <div class="campo">
+          <label for="excerpt">Resumo <span class="campo__dica">opcional</span></label>
+          <input type="text" id="excerpt" maxlength="240" placeholder="Uma frase que aparece na lista" />
+        </div>
+
+        <div class="campo">
+          <label for="content">Conteúdo</label>
+          <textarea id="content" rows="9" placeholder="Escreva o post aqui…"></textarea>
+        </div>
+
+        <label class="checagem">
+          <input type="checkbox" id="published" />
+          Publicar agora
+        </label>
+
+        <div class="acoes">
+          <button class="botao botao--primario" id="salvar">Salvar post</button>
+          <button class="botao botao--texto" id="cancelar" hidden>Cancelar edição</button>
+        </div>
+      </aside>
+    </main>
+
+    <script src="./js/app.js"></script>
+  </body>
+</html>

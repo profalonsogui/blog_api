@@ -1,0 +1,25 @@
+// Documentação: https://www.prisma.io/docs
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  title     String   @db.VarChar(160)
+  slug      String   @unique @db.VarChar(180)
+  excerpt   String?  @db.VarChar(240)
+  content   String
+  author    String   @default("Anônimo") @db.VarChar(80)
+  published Boolean  @default(false)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([published, createdAt])
+  @@map("posts")
+}
